@@ -1,0 +1,661 @@
+if [ -r src/htslib/Makefile ]; then cd src/htslib && autoheader && autoconf && ./configure --disable-s3 --disable-gcs --disable-libcurl --disable-plugins && /Applications/Xcode.app/Contents/Developer/usr/bin/make && /Applications/Xcode.app/Contents/Developer/usr/bin/make lib-static && cd ../../ && touch .htslib; fi
+g++ -std=c++11 -I /Users/socci/bin/homebrew/include -isystem /Users/socci/TEMPWORK/Delly/sansa/src/htslib/ -pedantic -W -Wall -Wno-unknown-pragmas -D__STDC_LIMIT_MACROS -fno-strict-aliasing -fpermissive -O3 -fno-tree-vectorize -DNDEBUG src/sansa.cpp -o src/sansa -L /Users/socci/bin/homebrew/lib -L/Users/socci/TEMPWORK/Delly/sansa/src/htslib/ -L/Users/socci/TEMPWORK/Delly/sansa/src/htslib//lib -lboost_iostreams -lboost_filesystem -lboost_system -lboost_program_options -lboost_date_time -lhts -lz -llzma -lbz2 -Wl,-rpath,/Users/socci/TEMPWORK/Delly/sansa/src/htslib/
+In file included from src/sansa.cpp:14:
+In file included from src/annotate.h:21:
+/Users/socci/bin/homebrew/include/boost/progress.hpp:23:3: error: This header is deprecated and will be removed. (You can define BOOST_TIMER_ENABLE_DEPRECATED to suppress this error.)
+# error This header is deprecated and will be removed. (You can define BOOST_TIMER_ENABLE_DEPRECATED to suppress this error.)
+  ^
+/Users/socci/bin/homebrew/include/boost/progress.hpp:27:1: warning: This header is deprecated. Use the facilities in <boost/timer/timer.hpp> or <boost/timer/progress_display.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED( "the facilities in <boost/timer/timer.hpp> or <boost/timer/progress_display.hpp>" )
+^
+/Users/socci/bin/homebrew/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/socci/bin/homebrew/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:184:2: note: expanded from here
+ message("This header is deprecated. Use " "the facilities in <boost/timer/timer.hpp> or <boost/timer/progress_display.hpp>" " instead.")
+ ^
+In file included from src/sansa.cpp:14:
+In file included from src/annotate.h:21:
+In file included from /Users/socci/bin/homebrew/include/boost/progress.hpp:29:
+/Users/socci/bin/homebrew/include/boost/timer.hpp:21:3: error: This header is deprecated and will be removed. (You can define BOOST_TIMER_ENABLE_DEPRECATED to suppress this error.)
+# error This header is deprecated and will be removed. (You can define BOOST_TIMER_ENABLE_DEPRECATED to suppress this error.)
+  ^
+/Users/socci/bin/homebrew/include/boost/timer.hpp:25:1: warning: This header is deprecated. Use the facilities in <boost/timer/timer.hpp> instead. [-W#pragma-messages]
+BOOST_HEADER_DEPRECATED( "the facilities in <boost/timer/timer.hpp>" )
+^
+/Users/socci/bin/homebrew/include/boost/config/header_deprecated.hpp:23:37: note: expanded from macro 'BOOST_HEADER_DEPRECATED'
+# define BOOST_HEADER_DEPRECATED(a) BOOST_PRAGMA_MESSAGE("This header is deprecated. Use " a " instead.")
+                                    ^
+/Users/socci/bin/homebrew/include/boost/config/pragma_message.hpp:24:34: note: expanded from macro 'BOOST_PRAGMA_MESSAGE'
+# define BOOST_PRAGMA_MESSAGE(x) _Pragma(BOOST_STRINGIZE(message(x)))
+                                 ^
+<scratch space>:187:2: note: expanded from here
+ message("This header is deprecated. Use " "the facilities in <boost/timer/timer.hpp>" " instead.")
+ ^
+In file included from src/sansa.cpp:14:
+In file included from src/annotate.h:23:
+src/parsedb.h:107:2: warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
+        bcf_write1(ofile, hdr_out, rec);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/socci/bin/homebrew/include/htslib/vcf.h:270:33: note: expanded from macro 'bcf_write1'
+    #define bcf_write1(fp,h,v)  bcf_write((fp),(h),(v))
+                                ^~~~~~~~~ ~~~~~~~~~~~~
+In file included from src/sansa.cpp:12:
+src/util.h:76:32: warning: 'binary_function<sansa::SV, sansa::SV, bool>' is deprecated [-Wdeprecated-declarations]
+  struct SortSVs : public std::binary_function<TSV, TSV, bool>
+                               ^
+src/parsedb.h:114:34: note: in instantiation of template class 'sansa::SortSVs<sansa::SV>' requested here
+    sort(svs.begin(), svs.end(), SortSVs<SV>());
+                                 ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h:24:29: note: 'binary_function<sansa::SV, sansa::SV, bool>' has been explicitly marked deprecated here
+struct _LIBCPP_TEMPLATE_VIS _LIBCPP_DEPRECATED_IN_CXX11 binary_function
+                            ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:850:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX11'
+#    define _LIBCPP_DEPRECATED_IN_CXX11 _LIBCPP_DEPRECATED
+                                        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:835:49: note: expanded from macro '_LIBCPP_DEPRECATED'
+#      define _LIBCPP_DEPRECATED __attribute__((deprecated))
+                                                ^
+In file included from src/sansa.cpp:12:
+src/util.h:36:42: warning: 'binary_function<sansa::IntervalLabel, sansa::IntervalLabel, bool>' is deprecated [-Wdeprecated-declarations]
+  struct SortIntervalLabel : public std::binary_function<TRecord, TRecord, bool> {
+                                         ^
+src/bed.h:118:91: note: in instantiation of template class 'sansa::SortIntervalLabel<sansa::IntervalLabel>' requested here
+      std::sort(overlappingRegions[refIndex].begin(), overlappingRegions[refIndex].end(), SortIntervalLabel<IntervalLabel>());
+                                                                                          ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h:24:29: note: 'binary_function<sansa::IntervalLabel, sansa::IntervalLabel, bool>' has been explicitly marked deprecated here
+struct _LIBCPP_TEMPLATE_VIS _LIBCPP_DEPRECATED_IN_CXX11 binary_function
+                            ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:850:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX11'
+#    define _LIBCPP_DEPRECATED_IN_CXX11 _LIBCPP_DEPRECATED
+                                        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:835:49: note: expanded from macro '_LIBCPP_DEPRECATED'
+#      define _LIBCPP_DEPRECATED __attribute__((deprecated))
+                                                ^
+In file included from src/sansa.cpp:12:
+src/util.h:43:42: warning: 'binary_function<sansa::IntervalLabel, sansa::IntervalLabel, bool>' is deprecated [-Wdeprecated-declarations]
+  struct SortIntervalStart : public std::binary_function<TRecord, TRecord, bool> {
+                                         ^
+src/annotate.h:116:66: note: in instantiation of template class 'sansa::SortIntervalStart<sansa::IntervalLabel>' requested here
+        std::sort(gRegions[refIndex].begin(), gRegions[refIndex].end(), SortIntervalStart<IntervalLabel>());
+                                                                        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/binary_function.h:24:29: note: 'binary_function<sansa::IntervalLabel, sansa::IntervalLabel, bool>' has been explicitly marked deprecated here
+struct _LIBCPP_TEMPLATE_VIS _LIBCPP_DEPRECATED_IN_CXX11 binary_function
+                            ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:850:41: note: expanded from macro '_LIBCPP_DEPRECATED_IN_CXX11'
+#    define _LIBCPP_DEPRECATED_IN_CXX11 _LIBCPP_DEPRECATED
+                                        ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config:835:49: note: expanded from macro '_LIBCPP_DEPRECATED'
+#      define _LIBCPP_DEPRECATED __attribute__((deprecated))
+                                                ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:21:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/direct_streambuf.hpp:24:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/functional.hpp:118:52: warning: definition of implicit copy constructor for 'member_close_operation<boost::iostreams::detail::linked_streambuf<char>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(member_close_operation& operator=(const member_close_operation&))
+                                                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:203:9: note: in implicit copy constructor for 'boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char>>' first required here
+        detail::call_member_close(*self, BOOST_IOS::in),
+        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:91:23: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_null_device<char, boost::iostreams::input>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::close' requested here
+                this->close(); 
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:328:66: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char, boost::iostreams::input>>::~stream_buffer' requested here
+                    stream_buffer< basic_null_device<Ch, Mode> > null;
+                                                                 ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:321:23: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl::close' requested here
+                try { close(); } catch (...) { }
+                      ^
+/Users/socci/bin/homebrew/include/boost/core/checked_delete.hpp:44:5: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl::~chain_impl' requested here
+    delete x;
+    ^
+/Users/socci/bin/homebrew/include/boost/smart_ptr/detail/shared_count.hpp:154:20: note: (skipping 3 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+            boost::checked_delete( p );
+                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:131:20: note: in instantiation of function template specialization 'boost::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl>::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl>' requested here
+    chain_base() : pimpl_(new chain_impl) { }
+                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:431:28: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_base' requested here
+BOOST_IOSTREAMS_DECL_CHAIN(chain, char)
+                           ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/chainbuf.hpp:53:5: note: in instantiation of member function 'boost::iostreams::chain<boost::iostreams::input>::chain' requested here
+    chainbuf() { client_type::set_chain(&chain_); }
+    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:60:41: note: in instantiation of member function 'boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input>, boost::iostreams::input, boost::iostreams::public_>::chainbuf' requested here
+BOOST_IOSTREAMS_DEFINE_FILTER_STREAMBUF(filtering_streambuf, boost::iostreams::chain, char)
+                                        ^
+src/util.h:300:68: note: in instantiation of member function 'boost::iostreams::filtering_streambuf<boost::iostreams::input>::filtering_streambuf' requested here
+    boost::iostreams::filtering_streambuf<boost::iostreams::input> dataIn;
+                                                                   ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:21:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/direct_streambuf.hpp:24:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/functional.hpp:136:45: warning: definition of implicit copy constructor for 'reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::input>>>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(reset_operation& operator=(const reset_operation&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:205:9: note: in implicit copy constructor for 'boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::input>>>>' first required here
+        detail::call_reset(storage_),
+        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:91:23: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_null_device<char, boost::iostreams::input>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::close' requested here
+                this->close(); 
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:328:66: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char, boost::iostreams::input>>::~stream_buffer' requested here
+                    stream_buffer< basic_null_device<Ch, Mode> > null;
+                                                                 ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:321:23: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl::close' requested here
+                try { close(); } catch (...) { }
+                      ^
+/Users/socci/bin/homebrew/include/boost/core/checked_delete.hpp:44:5: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl::~chain_impl' requested here
+    delete x;
+    ^
+/Users/socci/bin/homebrew/include/boost/smart_ptr/detail/shared_count.hpp:154:20: note: (skipping 3 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+            boost::checked_delete( p );
+                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:131:20: note: in instantiation of function template specialization 'boost::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl>::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl>' requested here
+    chain_base() : pimpl_(new chain_impl) { }
+                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:431:28: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_base' requested here
+BOOST_IOSTREAMS_DECL_CHAIN(chain, char)
+                           ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/chainbuf.hpp:53:5: note: in instantiation of member function 'boost::iostreams::chain<boost::iostreams::input>::chain' requested here
+    chainbuf() { client_type::set_chain(&chain_); }
+    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:60:41: note: in instantiation of member function 'boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input>, boost::iostreams::input, boost::iostreams::public_>::chainbuf' requested here
+BOOST_IOSTREAMS_DEFINE_FILTER_STREAMBUF(filtering_streambuf, boost::iostreams::chain, char)
+                                        ^
+src/util.h:300:68: note: in instantiation of member function 'boost::iostreams::filtering_streambuf<boost::iostreams::input>::filtering_streambuf' requested here
+    boost::iostreams::filtering_streambuf<boost::iostreams::input> dataIn;
+                                                                   ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:21:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/direct_streambuf.hpp:24:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/functional.hpp:152:51: warning: definition of implicit copy constructor for 'clear_flags_operation<int>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(clear_flags_operation& operator=(const clear_flags_operation&))
+                                                  ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:206:9: note: in implicit copy constructor for 'boost::iostreams::detail::clear_flags_operation<int>' first required here
+        detail::clear_flags(flags_)
+        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:91:23: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_null_device<char, boost::iostreams::input>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::close' requested here
+                this->close(); 
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:328:66: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char, boost::iostreams::input>>::~stream_buffer' requested here
+                    stream_buffer< basic_null_device<Ch, Mode> > null;
+                                                                 ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:321:23: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl::close' requested here
+                try { close(); } catch (...) { }
+                      ^
+/Users/socci/bin/homebrew/include/boost/core/checked_delete.hpp:44:5: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl::~chain_impl' requested here
+    delete x;
+    ^
+/Users/socci/bin/homebrew/include/boost/smart_ptr/detail/shared_count.hpp:154:20: note: (skipping 3 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+            boost::checked_delete( p );
+                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:131:20: note: in instantiation of function template specialization 'boost::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl>::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl>' requested here
+    chain_base() : pimpl_(new chain_impl) { }
+                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:431:28: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_base' requested here
+BOOST_IOSTREAMS_DECL_CHAIN(chain, char)
+                           ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/chainbuf.hpp:53:5: note: in instantiation of member function 'boost::iostreams::chain<boost::iostreams::input>::chain' requested here
+    chainbuf() { client_type::set_chain(&chain_); }
+    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:60:41: note: in instantiation of member function 'boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input>, boost::iostreams::input, boost::iostreams::public_>::chainbuf' requested here
+BOOST_IOSTREAMS_DEFINE_FILTER_STREAMBUF(filtering_streambuf, boost::iostreams::chain, char)
+                                        ^
+src/util.h:300:68: note: in instantiation of member function 'boost::iostreams::filtering_streambuf<boost::iostreams::input>::filtering_streambuf' requested here
+    boost::iostreams::filtering_streambuf<boost::iostreams::input> dataIn;
+                                                                   ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:22:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:23:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/adapter/concept_adapter.hpp:121:45: warning: definition of implicit copy constructor for 'concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::input>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(concept_adapter& operator=(const concept_adapter&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/optional.hpp:100:25: note: in implicit copy constructor for 'boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::input>>' first required here
+        new (address()) T(t); 
+                        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:185:14: note: in instantiation of member function 'boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::input>>>::reset' requested here
+    storage_.reset(wrapper(t));
+             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:106:24: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_null_device<char, boost::iostreams::input>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::open' requested here
+            base_type::open(t BOOST_IOSTREAMS_PUSH_ARGS());
+                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:45: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char, boost::iostreams::input>>::open_impl' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:330:30: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char, boost::iostreams::input>>::open' requested here
+                        null.open(basic_null_device<Ch, Mode>());
+                             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:321:23: note: (skipping 5 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+                try { close(); } catch (...) { }
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:131:20: note: in instantiation of function template specialization 'boost::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl>::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_impl>' requested here
+    chain_base() : pimpl_(new chain_impl) { }
+                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:431:28: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::chain_base' requested here
+BOOST_IOSTREAMS_DECL_CHAIN(chain, char)
+                           ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/chainbuf.hpp:53:5: note: in instantiation of member function 'boost::iostreams::chain<boost::iostreams::input>::chain' requested here
+    chainbuf() { client_type::set_chain(&chain_); }
+    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:60:41: note: in instantiation of member function 'boost::iostreams::detail::chainbuf<boost::iostreams::chain<boost::iostreams::input>, boost::iostreams::input, boost::iostreams::public_>::chainbuf' requested here
+BOOST_IOSTREAMS_DEFINE_FILTER_STREAMBUF(filtering_streambuf, boost::iostreams::chain, char)
+                                        ^
+src/util.h:300:68: note: in instantiation of member function 'boost::iostreams::filtering_streambuf<boost::iostreams::input>::filtering_streambuf' requested here
+    boost::iostreams::filtering_streambuf<boost::iostreams::input> dataIn;
+                                                                   ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:22:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:23:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/adapter/concept_adapter.hpp:121:45: warning: definition of implicit copy constructor for 'concept_adapter<boost::iostreams::basic_gzip_decompressor<>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(concept_adapter& operator=(const concept_adapter&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/optional.hpp:100:25: note: in implicit copy constructor for 'boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<>>' first required here
+        new (address()) T(t); 
+                        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:185:14: note: in instantiation of member function 'boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<>>>::reset' requested here
+    storage_.reset(wrapper(t));
+             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:106:24: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_gzip_decompressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::open' requested here
+            base_type::open(t BOOST_IOSTREAMS_PUSH_ARGS());
+                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:45: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::open_impl' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:254:21: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::stream_buffer' requested here
+            buf(new streambuf_t(t, buffer_size, pback_size));
+                    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:205:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::push_impl<boost::iostreams::basic_gzip_decompressor<>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:496:15: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::push<boost::iostreams::basic_gzip_decompressor<>>' requested here
+    { chain_->push(t BOOST_IOSTREAMS_PUSH_ARGS()); }
+              ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:484:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::input>>::push_impl<boost::iostreams::basic_gzip_decompressor<>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+src/util.h:301:12: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::input>>::push<boost::iostreams::basic_gzip_decompressor<>>' requested here
+    dataIn.push(boost::iostreams::gzip_decompressor());
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:21:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/direct_streambuf.hpp:24:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/functional.hpp:136:45: warning: definition of implicit copy constructor for 'reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<>>>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(reset_operation& operator=(const reset_operation&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:205:9: note: in implicit copy constructor for 'boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<>>>>' first required here
+        detail::call_reset(storage_),
+        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:91:23: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_gzip_decompressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::close' requested here
+                this->close(); 
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:30: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::~stream_buffer' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:254:21: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::stream_buffer' requested here
+            buf(new streambuf_t(t, buffer_size, pback_size));
+                    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:205:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::push_impl<boost::iostreams::basic_gzip_decompressor<>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:496:15: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::push<boost::iostreams::basic_gzip_decompressor<>>' requested here
+    { chain_->push(t BOOST_IOSTREAMS_PUSH_ARGS()); }
+              ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:484:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::input>>::push_impl<boost::iostreams::basic_gzip_decompressor<>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+src/util.h:301:12: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::input>>::push<boost::iostreams::basic_gzip_decompressor<>>' requested here
+    dataIn.push(boost::iostreams::gzip_decompressor());
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:22:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:23:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/adapter/concept_adapter.hpp:121:45: warning: definition of implicit copy constructor for 'concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(concept_adapter& operator=(const concept_adapter&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/optional.hpp:100:25: note: in implicit copy constructor for 'boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>' first required here
+        new (address()) T(t); 
+                        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:185:14: note: in instantiation of member function 'boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>>::reset' requested here
+    storage_.reset(wrapper(t));
+             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:106:24: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::open' requested here
+            base_type::open(t BOOST_IOSTREAMS_PUSH_ARGS());
+                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:45: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::open_impl' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:254:21: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::stream_buffer' requested here
+            buf(new streambuf_t(t, buffer_size, pback_size));
+                    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:205:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::push_impl<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:496:15: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::push<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>' requested here
+    { chain_->push(t BOOST_IOSTREAMS_PUSH_ARGS()); }
+              ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:484:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::input>>::push_impl<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+src/util.h:302:12: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::input>>::push<char, std::char_traits<char>>' requested here
+    dataIn.push(file);
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:21:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/direct_streambuf.hpp:24:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/functional.hpp:136:45: warning: definition of implicit copy constructor for 'reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(reset_operation& operator=(const reset_operation&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:205:9: note: in implicit copy constructor for 'boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>>>' first required here
+        detail::call_reset(storage_),
+        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:91:23: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::close' requested here
+                this->close(); 
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:30: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::~stream_buffer' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:254:21: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::stream_buffer' requested here
+            buf(new streambuf_t(t, buffer_size, pback_size));
+                    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:205:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::push_impl<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:496:15: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::input>::push<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>' requested here
+    { chain_->push(t BOOST_IOSTREAMS_PUSH_ARGS()); }
+              ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:484:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::input>>::push_impl<boost::iostreams::detail::mode_adapter<boost::iostreams::input, std::istream>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+src/util.h:302:12: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::input>>::push<char, std::char_traits<char>>' requested here
+    dataIn.push(file);
+           ^
+In file included from src/sansa.cpp:14:
+In file included from src/annotate.h:23:
+src/parsedb.h:107:2: warning: ignoring return value of function declared with 'warn_unused_result' attribute [-Wunused-result]
+        bcf_write1(ofile, hdr_out, rec);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/socci/bin/homebrew/include/htslib/vcf.h:270:33: note: expanded from macro 'bcf_write1'
+    #define bcf_write1(fp,h,v)  bcf_write((fp),(h),(v))
+                                ^~~~~~~~~ ~~~~~~~~~~~~
+src/annotate.h:93:10: note: in instantiation of function template specialization 'sansa::parseDB<sansa::AnnotateConfig, std::vector<sansa::SV>>' requested here
+    if (!parseDB(c, svs)) {
+         ^
+src/annotate.h:231:12: note: in instantiation of function template specialization 'sansa::runAnnotate<sansa::AnnotateConfig>' requested here
+    return runAnnotate(c);
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:21:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/direct_streambuf.hpp:24:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/functional.hpp:136:45: warning: definition of implicit copy constructor for 'reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::output>>>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(reset_operation& operator=(const reset_operation&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:205:9: note: in implicit copy constructor for 'boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::output>>>>' first required here
+        detail::call_reset(storage_),
+        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:91:23: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_null_device<char, boost::iostreams::output>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::close' requested here
+                this->close(); 
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:328:66: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char, boost::iostreams::output>>::~stream_buffer' requested here
+                    stream_buffer< basic_null_device<Ch, Mode> > null;
+                                                                 ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:321:23: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::output>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::chain_impl::close' requested here
+                try { close(); } catch (...) { }
+                      ^
+/Users/socci/bin/homebrew/include/boost/core/checked_delete.hpp:44:5: note: in instantiation of member function 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::output>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::chain_impl::~chain_impl' requested here
+    delete x;
+    ^
+/Users/socci/bin/homebrew/include/boost/smart_ptr/detail/shared_count.hpp:154:20: note: (skipping 5 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+            boost::checked_delete( p );
+                   ^
+/Users/socci/bin/homebrew/include/boost/iostreams/filtering_stream.hpp:96:5: note: in instantiation of member function 'boost::iostreams::chain<boost::iostreams::output>::chain' requested here
+    filtering_stream_base() : stream_type(0) { this->set_chain(&chain_); }
+    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/filtering_stream.hpp:169:38: note: in instantiation of member function 'boost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output>, boost::iostreams::public_>::filtering_stream_base' requested here
+BOOST_IOSTREAMS_DEFINE_FILTER_STREAM(filtering_stream, boost::iostreams::chain, char)
+                                     ^
+src/query.h:105:41: note: in instantiation of member function 'boost::iostreams::filtering_stream<boost::iostreams::output>::filtering_stream' requested here
+    boost::iostreams::filtering_ostream dataOut;
+                                        ^
+src/annotate.h:121:5: note: in instantiation of function template specialization 'sansa::query<sansa::AnnotateConfig, std::vector<sansa::SV>, std::vector<std::vector<sansa::IntervalLabel>>, std::vector<std::string>>' requested here
+    query(c, svs, gRegions, geneIds);
+    ^
+src/annotate.h:231:12: note: in instantiation of function template specialization 'sansa::runAnnotate<sansa::AnnotateConfig>' requested here
+    return runAnnotate(c);
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:22:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:23:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/adapter/concept_adapter.hpp:121:45: warning: definition of implicit copy constructor for 'concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::output>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(concept_adapter& operator=(const concept_adapter&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/optional.hpp:100:25: note: in implicit copy constructor for 'boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::output>>' first required here
+        new (address()) T(t); 
+                        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:185:14: note: in instantiation of member function 'boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char, boost::iostreams::output>>>::reset' requested here
+    storage_.reset(wrapper(t));
+             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:106:24: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_null_device<char, boost::iostreams::output>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::open' requested here
+            base_type::open(t BOOST_IOSTREAMS_PUSH_ARGS());
+                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:45: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char, boost::iostreams::output>>::open_impl' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:330:30: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char, boost::iostreams::output>>::open' requested here
+                        null.open(basic_null_device<Ch, Mode>());
+                             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:321:23: note: (skipping 7 contexts in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+                try { close(); } catch (...) { }
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/filtering_stream.hpp:96:5: note: in instantiation of member function 'boost::iostreams::chain<boost::iostreams::output>::chain' requested here
+    filtering_stream_base() : stream_type(0) { this->set_chain(&chain_); }
+    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/filtering_stream.hpp:169:38: note: in instantiation of member function 'boost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output>, boost::iostreams::public_>::filtering_stream_base' requested here
+BOOST_IOSTREAMS_DEFINE_FILTER_STREAM(filtering_stream, boost::iostreams::chain, char)
+                                     ^
+src/query.h:105:41: note: in instantiation of member function 'boost::iostreams::filtering_stream<boost::iostreams::output>::filtering_stream' requested here
+    boost::iostreams::filtering_ostream dataOut;
+                                        ^
+src/annotate.h:121:5: note: in instantiation of function template specialization 'sansa::query<sansa::AnnotateConfig, std::vector<sansa::SV>, std::vector<std::vector<sansa::IntervalLabel>>, std::vector<std::string>>' requested here
+    query(c, svs, gRegions, geneIds);
+    ^
+src/annotate.h:231:12: note: in instantiation of function template specialization 'sansa::runAnnotate<sansa::AnnotateConfig>' requested here
+    return runAnnotate(c);
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:22:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:23:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/adapter/concept_adapter.hpp:121:45: warning: definition of implicit copy constructor for 'concept_adapter<boost::iostreams::basic_gzip_compressor<>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(concept_adapter& operator=(const concept_adapter&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/optional.hpp:100:25: note: in implicit copy constructor for 'boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_compressor<>>' first required here
+        new (address()) T(t); 
+                        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:185:14: note: in instantiation of member function 'boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_compressor<>>>::reset' requested here
+    storage_.reset(wrapper(t));
+             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:106:24: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_gzip_compressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::open' requested here
+            base_type::open(t BOOST_IOSTREAMS_PUSH_ARGS());
+                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:45: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::open_impl' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:254:21: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::stream_buffer' requested here
+            buf(new streambuf_t(t, buffer_size, pback_size));
+                    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:205:56: note: (skipping 1 context in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:496:15: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::output>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::push<boost::iostreams::basic_gzip_compressor<>>' requested here
+    { chain_->push(t BOOST_IOSTREAMS_PUSH_ARGS()); }
+              ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:484:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::output>>::push_impl<boost::iostreams::basic_gzip_compressor<>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+src/query.h:106:13: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::output>>::push<boost::iostreams::basic_gzip_compressor<>>' requested here
+    dataOut.push(boost::iostreams::gzip_compressor());
+            ^
+src/annotate.h:121:5: note: in instantiation of function template specialization 'sansa::query<sansa::AnnotateConfig, std::vector<sansa::SV>, std::vector<std::vector<sansa::IntervalLabel>>, std::vector<std::string>>' requested here
+    query(c, svs, gRegions, geneIds);
+    ^
+src/annotate.h:231:12: note: in instantiation of function template specialization 'sansa::runAnnotate<sansa::AnnotateConfig>' requested here
+    return runAnnotate(c);
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:21:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/direct_streambuf.hpp:24:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/functional.hpp:136:45: warning: definition of implicit copy constructor for 'reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_compressor<>>>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(reset_operation& operator=(const reset_operation&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:205:9: note: in implicit copy constructor for 'boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_compressor<>>>>' first required here
+        detail::call_reset(storage_),
+        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:91:23: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_gzip_compressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::close' requested here
+                this->close(); 
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:30: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::~stream_buffer' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:254:21: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::stream_buffer' requested here
+            buf(new streambuf_t(t, buffer_size, pback_size));
+                    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:205:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::output>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::push_impl<boost::iostreams::basic_gzip_compressor<>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:496:15: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::output>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::push<boost::iostreams::basic_gzip_compressor<>>' requested here
+    { chain_->push(t BOOST_IOSTREAMS_PUSH_ARGS()); }
+              ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:484:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::output>>::push_impl<boost::iostreams::basic_gzip_compressor<>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+src/query.h:106:13: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::output>>::push<boost::iostreams::basic_gzip_compressor<>>' requested here
+    dataOut.push(boost::iostreams::gzip_compressor());
+            ^
+src/annotate.h:121:5: note: in instantiation of function template specialization 'sansa::query<sansa::AnnotateConfig, std::vector<sansa::SV>, std::vector<std::vector<sansa::IntervalLabel>>, std::vector<std::string>>' requested here
+    query(c, svs, gRegions, geneIds);
+    ^
+src/annotate.h:231:12: note: in instantiation of function template specialization 'sansa::runAnnotate<sansa::AnnotateConfig>' requested here
+    return runAnnotate(c);
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:22:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:23:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/adapter/concept_adapter.hpp:121:45: warning: definition of implicit copy constructor for 'concept_adapter<boost::iostreams::basic_file_sink<char>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(concept_adapter& operator=(const concept_adapter&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/optional.hpp:100:25: note: in implicit copy constructor for 'boost::iostreams::detail::concept_adapter<boost::iostreams::basic_file_sink<char>>' first required here
+        new (address()) T(t); 
+                        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:185:14: note: in instantiation of member function 'boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_file_sink<char>>>::reset' requested here
+    storage_.reset(wrapper(t));
+             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:106:24: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_file_sink<char>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::open' requested here
+            base_type::open(t BOOST_IOSTREAMS_PUSH_ARGS());
+                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:45: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_file_sink<char>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::open_impl' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:254:21: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_file_sink<char>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::stream_buffer' requested here
+            buf(new streambuf_t(t, buffer_size, pback_size));
+                    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:205:56: note: (skipping 1 context in backtrace; use -ftemplate-backtrace-limit=0 to see all)
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:496:15: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::output>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::push<boost::iostreams::basic_file_sink<char>>' requested here
+    { chain_->push(t BOOST_IOSTREAMS_PUSH_ARGS()); }
+              ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:484:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::output>>::push_impl<boost::iostreams::basic_file_sink<char>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+src/query.h:107:13: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::output>>::push<boost::iostreams::basic_file_sink<char>>' requested here
+    dataOut.push(boost::iostreams::file_sink(c.matchfile.string().c_str(), std::ios_base::out | std::ios_base::binary));
+            ^
+src/annotate.h:121:5: note: in instantiation of function template specialization 'sansa::query<sansa::AnnotateConfig, std::vector<sansa::SV>, std::vector<std::vector<sansa::IntervalLabel>>, std::vector<std::string>>' requested here
+    query(c, svs, gRegions, geneIds);
+    ^
+src/annotate.h:231:12: note: in instantiation of function template specialization 'sansa::runAnnotate<sansa::AnnotateConfig>' requested here
+    return runAnnotate(c);
+           ^
+In file included from src/sansa.cpp:12:
+In file included from src/util.h:7:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/filtering_streambuf.hpp:17:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:34:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:21:
+In file included from /Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/direct_streambuf.hpp:24:
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/functional.hpp:136:45: warning: definition of implicit copy constructor for 'reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_file_sink<char>>>>' is deprecated because it has a user-declared copy assignment operator [-Wdeprecated-copy]
+    BOOST_DELETED_FUNCTION(reset_operation& operator=(const reset_operation&))
+                                            ^
+/Users/socci/bin/homebrew/include/boost/iostreams/detail/streambuf/indirect_streambuf.hpp:205:9: note: in implicit copy constructor for 'boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_file_sink<char>>>>' first required here
+        detail::call_reset(storage_),
+        ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:91:23: note: in instantiation of member function 'boost::iostreams::detail::indirect_streambuf<boost::iostreams::basic_file_sink<char>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::close' requested here
+                this->close(); 
+                      ^
+/Users/socci/bin/homebrew/include/boost/iostreams/stream_buffer.hpp:94:30: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_file_sink<char>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::~stream_buffer' requested here
+    BOOST_IOSTREAMS_FORWARD( stream_buffer, open_impl, T,
+                             ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:254:21: note: in instantiation of member function 'boost::iostreams::stream_buffer<boost::iostreams::basic_file_sink<char>, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::stream_buffer' requested here
+            buf(new streambuf_t(t, buffer_size, pback_size));
+                    ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:205:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::output>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::push_impl<boost::iostreams::basic_file_sink<char>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:496:15: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::output>, char, std::char_traits<char>, std::allocator<char>, boost::iostreams::output>::push<boost::iostreams::basic_file_sink<char>>' requested here
+    { chain_->push(t BOOST_IOSTREAMS_PUSH_ARGS()); }
+              ^
+/Users/socci/bin/homebrew/include/boost/iostreams/chain.hpp:484:56: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::output>>::push_impl<boost::iostreams::basic_file_sink<char>>' requested here
+    BOOST_IOSTREAMS_DEFINE_PUSH(push, mode, char_type, push_impl)
+                                                       ^
+src/query.h:107:13: note: in instantiation of function template specialization 'boost::iostreams::detail::chain_client<boost::iostreams::chain<boost::iostreams::output>>::push<boost::iostreams::basic_file_sink<char>>' requested here
+    dataOut.push(boost::iostreams::file_sink(c.matchfile.string().c_str(), std::ios_base::out | std::ios_base::binary));
+            ^
+src/annotate.h:121:5: note: in instantiation of function template specialization 'sansa::query<sansa::AnnotateConfig, std::vector<sansa::SV>, std::vector<std::vector<sansa::IntervalLabel>>, std::vector<std::string>>' requested here
+    query(c, svs, gRegions, geneIds);
+    ^
+src/annotate.h:231:12: note: in instantiation of function template specialization 'sansa::runAnnotate<sansa::AnnotateConfig>' requested here
+    return runAnnotate(c);
+           ^
+21 warnings and 2 errors generated.
+make: *** [src/sansa] Error 1
