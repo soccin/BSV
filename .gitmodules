@@ -1,0 +1,6 @@
+[submodule "code/delly"]
+	path = code/delly
+	url = git@github.com:dellytools/delly.git
+[submodule "code/sansa"]
+	path = code/sansa
+	url = https://github.com/dellytools/sansa.git
