@@ -15,7 +15,7 @@ SDIR="$( cd "$( dirname "$0" )" && pwd )"
 module load bcftools
 
 TUMOR=$1
-BASE=$(basename $TUMOR | sed 's/.bam//' | sed 's/___MD.*//')
+BASE=$(basename $TUMOR | sed 's/.bam//' | sed 's/.smap*//' )
 
 echo $TUMOR
 echo $BASE
