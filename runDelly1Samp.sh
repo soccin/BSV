@@ -27,7 +27,7 @@ if [ "$GENOME_BUILD" == "b37" ]; then
     EXCL=$SDIR/rsrc/delly/human.b37.excl.tsv
 elif [ "$GENOME_BUILD" == "GRCh38" ]; then
     GENOME=/juno/bic/depot/assemblies/H.sapiens/GRCh38_1kg/GRCh38_full_analysis_set_plus_decoy_hla.fa
-    EXCL=$SDIR/rsrc/delly/excludeTemplates/human.hg38.excl.tsv
+    EXCL=$SDIR/rsrc/delly/human.hg38.excl.tsv
 else
     echo "Unknown genome build: $GENOME_BUILD"
     exit 1
