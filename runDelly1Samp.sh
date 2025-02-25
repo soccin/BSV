@@ -20,8 +20,18 @@ BASE=$(basename $TUMOR | sed 's/.bam//' | sed 's/.smap*//' )
 echo $TUMOR
 echo $BASE
 
-GENOME=/juno/bic/depot/assemblies/H.sapiens/b37/b37.fasta
-EXCL=$SDIR/rsrc/delly/human.b37.excl.tsv
+GENOME_BUILD=$($SDIR/bin/getGenomeBuildBAM.sh $TUMOR)
+
+if [ "$GENOME_BUILD" == "b37" ]; then
+    GENOME=/juno/bic/depot/assemblies/H.sapiens/b37/b37.fasta
+    EXCL=$SDIR/rsrc/delly/human.b37.excl.tsv
+elif [ "$GENOME_BUILD" == "GRCh38" ]; then
+    GENOME=/juno/bic/depot/assemblies/H.sapiens/GRCh38_1kg/GRCh38_full_analysis_set_plus_decoy_hla.fa
+    EXCL=$SDIR/rsrc/delly/excludeTemplates/human.hg38.excl.tsv
+else
+    echo "Unknown genome build: $GENOME_BUILD"
+    exit 1
+fi
 
 DELLY=$(ls $SDIR/bin/delly_*linux_x86_* | sort -V | tail -1)
 
@@ -40,6 +50,7 @@ bcftools view ${ODIR}/${BASE}.bcf >${ODIR}/${BASE}.vcf
 
 cat <<-EOF > $ODIR/${BASE}.run.log
 SDIR: $SDIR
+GENOME_BUILD: $GENOME_BUILD
 GENOME: $GENOME
 EXCL: $EXCL
 TUMOR: $TUMOR
